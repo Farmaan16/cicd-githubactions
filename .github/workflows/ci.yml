@@ -35,3 +35,10 @@ jobs:
         with:
           name: build
           path: dist  # Change this if your build output is in a different folder
+
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3  # GitHub Pages action
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist  # Adjust if your build output is in a different folder    
