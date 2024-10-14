@@ -1,5 +1,6 @@
 {
   "name": "cicd-githubactions",
+  "homepage": "https://farmaan16.github.io/cicd-githubactions/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
