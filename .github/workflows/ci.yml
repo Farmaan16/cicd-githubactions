@@ -14,10 +14,10 @@ jobs:
 
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: '20'  # Change to your desired Node.js version
 
@@ -31,7 +31,7 @@ jobs:
         run: npm test || echo "No tests defined"  # Adjust if you have a specific test command
 
       - name: Upload production-ready build artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: build
           path: dist  # Change this if your build output is in a different folder
