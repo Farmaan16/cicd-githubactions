@@ -3,39 +3,33 @@ name: CI
 on:
   push:
     branches:
-      - main  # Adjust this to your default branch
-  pull_request:
-    branches:
-      - main  # Adjust this to your default branch
+      - main
 
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out the repository
-        uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v2
 
-      - name: Set up Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'  # Change to your desired Node.js version
+          node-version: 20
 
       - name: Install dependencies
-        run: npm install
+        uses: bahmutov/npm-install@v4
 
-      - name: Build the project
+      - name: Build project
         run: npm run build
-
-      - name: Run tests (if you have any)
-        run: npm test || echo "No tests defined"  # Adjust if you have a specific test command
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v4
         with:
           name: production-files
           path: ./dist
-
 
   deploy:
     name: Deploy
@@ -51,8 +45,8 @@ jobs:
           path: ./dist
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4  # GitHub Pages action
+        uses: peaceiris/actions-gh-pages@v4 # GitHub Pages action
         with:
           github_token: ${{   secrets.GH_TOKEN }}
-          publish_dir: ./dist  # Adjust if your build output is in a different folder   
+          publish_dir: ./dist # Adjust if your build output is in a different folder
 
