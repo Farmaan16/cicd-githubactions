@@ -9,7 +9,7 @@ function App() {
     <>
       <div>
         CICD-Github actions
-        <p>test cicd</p>
+        <p>test cicd 2</p>
       </div>
     </>
   )
